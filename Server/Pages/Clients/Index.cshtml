@@ -1,0 +1,55 @@
+﻿@page
+@model Server.Pages.Clients.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Clients</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].SerialNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].RegisteredBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Status)
+            </th>
+            <th>
+                Last activity at
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Client) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @item.LastActivityAt
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.SerialNr">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.SerialNr">Details</a> |
+                <a asp-page="/Messages/Index" asp-route-ClientID="@item.SerialNr">Messages</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SerialNr">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

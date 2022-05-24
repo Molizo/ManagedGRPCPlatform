@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Server";
+
+package activation;
+
+// The service definition.
+service Activation {
+  rpc Activation (ActivationRequest) returns (ActivationReply);
+}
+
+// The request message containing the data.
+message ActivationRequest {
+  string serial = 1;
+}
+
+// The response message containing the reply.
+message ActivationReply {
+  string message = 1;
+  string clientToServerPublicKey = 2;
+}

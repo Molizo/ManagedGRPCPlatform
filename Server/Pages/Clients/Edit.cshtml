@@ -1,0 +1,59 @@
+﻿@page
+@model Server.Pages.Clients.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Client.SerialNr" />
+            <div class="form-group">
+                <label asp-for="Client.RegisteredBy" class="control-label"></label>
+                <input asp-for="Client.RegisteredBy" class="form-control" />
+                <span asp-validation-for="Client.RegisteredBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Status" class="control-label"></label>
+                <select asp-for="Client.Status" class="form-control">
+                    <option value="@Models.ClientStatus.Registered">Registered</option>
+                    <option value="@Models.ClientStatus.Activated">Activated</option>
+                    <option value="@Models.ClientStatus.Banned">Banned</option>
+                </select>
+                <span asp-validation-for="Client.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.LastActivityAt" class="control-label"></label>
+                <input asp-for="Client.LastActivityAt" class="form-control" disabled/>
+                <span asp-validation-for="Client.LastActivityAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.ClientToServerPublicKey" class="control-label"></label>
+                <input asp-for="Client.ClientToServerPublicKey" class="form-control" />
+                <span asp-validation-for="Client.ClientToServerPublicKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.ClientToServerPrivateKey" class="control-label"></label>
+                <input asp-for="Client.ClientToServerPrivateKey" class="form-control" />
+                <span asp-validation-for="Client.ClientToServerPrivateKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

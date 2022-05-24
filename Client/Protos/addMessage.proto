@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Client";
+
+package message;
+
+// The greeting service definition.
+service AddMessage {
+  // Sends a greeting
+  rpc AddMessage (AddMessageRequest) returns (AddMessageReply);
+}
+
+// The request message containing the user's name.
+message AddMessageRequest {
+  string serial = 1;
+  string message = 2;
+}
+
+// The response message containing the greetings.
+message AddMessageReply {
+  string message = 1;
+}

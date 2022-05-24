@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Server";
+
+package message;
+
+// The service definition.
+service AddMessage {
+  rpc AddMessage (AddMessageRequest) returns (AddMessageReply);
+}
+
+// The request message containing the data.
+message AddMessageRequest {
+  string serial = 1;
+  string message = 2;
+}
+
+// The response message containing the reply.
+message AddMessageReply {
+  string message = 1;
+}
